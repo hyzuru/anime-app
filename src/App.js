@@ -1,24 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react';
+import './Components/style.scss';
+import { AnimeList } from './Components/AnimeList';
+import { AnimeInfo } from './Components/AnimeInfo';
 
 function App() {
+  const [search, setSearch] = useState('Shingeki no Kyojin');
+  const [animeData, setAnimeData] = useState();
+  const [animeInfo, setAnimeInfo] = useState();
+  const getData = async () => {
+    const res = await fetch(
+      `https://api.jikan.moe/v4/anime?q=${search}&limit=20`
+    );
+    const resData = await res.json();
+    setAnimeData(resData.data);
+    console.log(resData.data);
+  };
+  useEffect(() => {
+    getData();
+  }, [search]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <>
+      <header className="header">
+        <h1>MyAnimeList</h1>
+        <div className="search-box">
+          <input
+            type="search"
+            placeholder="Search your anime"
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </div>
       </header>
-    </div>
+      <div className="container">
+        <div className="animeInfo">
+          {animeInfo && <AnimeInfo animeInfo={animeInfo} />}
+        </div>
+        <div className="anime-row">
+          <h2 className="text-heading">Anime</h2>
+          <div className="row">
+            <AnimeList animeList={animeData} setAnimeInfo={setAnimeInfo} />
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
 
