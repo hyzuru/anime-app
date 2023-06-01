@@ -68,3 +68,35 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+### ABOUT THIS APP (REWRITE THIS)
+
+This is a react app that uses data from MyAnimeList.net via the Jikan REST API v4.
+The goal of this project was to practice using React and APIs while making something fun and useful for myself.
+
+### FEATURES
+
+- Search for Anime by name
+- See details about each anime
+- Add and remove anime from a list
+
+### INSTALLATION
+
+Clone repo
+
+Go in to folder
+`cd anime-app`
+
+install packages
+`npm i`
+
+run and load in localhost
+`npm start`
+
+### References
+
+Based off this tutorial:
+https://www.youtube.com/watch?v=yVGFvr-TAwg&ab_channel=ImaginaryEngineering
+
+Using Jikan API, open-source REST API that parses through MyAnimeList.net online database and community.
+https://jikan.moe/
